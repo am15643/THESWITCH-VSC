@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webcomic</title>
+    <link href="style.css" rel="stylessheet">
+    <style>
+
+        *{
+            margin: 0;
+        }
+        section{
+            width: 100vw;
+            height: 100vh;
+            padding: 2em;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            }
+
+        section:nth-child(odd){
+            background-color: lightgoldenrodyellow;
+        }
+
+        h1{
+            font-size: 6em;
+            
+        }
+
+        p {
+            font-size: 2em;
+            display: flex;
+        }
+
+       
+    </style>
+</head>
+<body>
+    <section>
+        <h1 id=""> THE SWITCH </h1>
+    </section>
+
+    <section class="container">
+        <img id="first" src="Panel1.1-IDLE.jpg" alt="">
+        <p id="text1">Ryan, a computer science major, and Jamie,<br>
+            a business major were talking in D2. <br> 
+         The difficultness of their majors came up in
+        their conversation, prompting an <span onclick="toggleImage('first','text1')" style="color:blue"> argument</span></p>
+    </section>
+    
+    <section>
+        <img src="Panel2-BG.jpg">
+    </section>
+    <script> 
+        let imgnum = 0;
+
+        function toggleImage(imgname, textname) {
+            const img = document.getElementById(imgname);
+            const text1 = document.getElementById(textname);
+            imgnum += 1;
+            if (imgnum == 1) 
+            { img.src = "Panel1.2-ANNOYED.jpg";
+            text1.innerHTML = `Jamie crossed their arms, clearly annoyed.<br>
+            "You think your major is harder?" "At least mine actually matters! Ryan snapped. Soon the argument escalated to a <br>
+              <span onclick="toggleImage('first','text1')" style="color:blue"> fight. </span>`;
+            } 
+            else if (imgnum == 2) 
+            { img.src = "Panel1.3-FIGHT.jpg";
+            text1.innerHTML = ` They hit each other until both of them <span onclick="toggleImage('first','text1')" style="color:blue"> fell </span> to the ground`;
+            }
+            else if (imgnum == 3) 
+            { img.src = "Panel1.4-AFTERFIGHT.jpg";
+            text1.innerHTML = `Their heads were hurting, <br> even when they went to bed that night `;
+            }
+            
+        }
+    </script>
+</body>
+</html>
