@@ -5,11 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Webcomic</title>
     <link href="style.css" rel="stylessheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bitcount+Prop+Single+Ink:wght@100..900&display=swap" 
+    rel="stylesheet"> 
+
+    
     <style>
 
         *{
             margin: 0;
         }
+
+        
         section{
             width: 100vw;
             height: 100vh;
@@ -30,29 +40,49 @@
         }
 
         p {
-            font-size: 2em;
-            display: flex;
+            font-size: 3.5em;
+            font-family: 'Bitcount Prop Single Ink', sans-serif;
         }
+
+        #firstDIV{
+            display: flex;
+            align-items: flex-end;
+            margin-left: 50px;
+        }
+
+        .clickable{
+            font-style: italic;
+            margin-left: 4px;
+        }
+
+        
 
        
     </style>
 </head>
 <body>
-    <section>
-        <h1 id=""> THE SWITCH </h1>
-    </section>
+    <main>
+        <section>
+            <h1 id=""> THE SWITCH </h1>
+        </section>
 
-    <section class="container">
-        <img id="first" src="Panel1.1-IDLE.jpg" alt="">
-        <p id="text1">Ryan, a computer science major, and Jamie,<br>
-            a business major were talking in D2. <br> 
-         The difficultness of their majors came up in
-        their conversation, prompting an <span onclick="toggleImage('first','text1')" style="color:blue"> argument</span></p>
-    </section>
-    
-    <section>
-        <img src="Panel2-BG.jpg">
-    </section>
+        <section class="container">
+            <img id="first" src="Panel1.1-IDLE.jpg" alt="">
+            <div id="firstDIV">
+                <p id="text1">Ryan, a computer science major, and Jamie,<br>
+                    a business major were talking in D2. <br> 
+                The difficultness of their majors came up <br> in
+                their conversation, prompting an<span onclick="toggleImage('first','text1')" class="clickable">argument.</span></p>
+            </div>
+        </section>
+        
+        <section>
+                <img src="Panel2-BG.jpg" 
+                data-aos="zoom-in-up"
+                data-aos-delay="500"
+                data-aos-duration="2000">
+        </section>
+    </main>
     <script> 
         let imgnum = 0;
 
@@ -64,18 +94,22 @@
             { img.src = "Panel1.2-ANNOYED.jpg";
             text1.innerHTML = `Jamie crossed their arms, clearly annoyed.<br>
             "You think your major is harder?" "At least mine actually matters! Ryan snapped. Soon the argument escalated to a <br>
-              <span onclick="toggleImage('first','text1')" style="color:blue"> fight. </span>`;
+              <span onclick="toggleImage('first','text1')" class="clickable"> fight. </span>`;
             } 
             else if (imgnum == 2) 
             { img.src = "Panel1.3-FIGHT.jpg";
-            text1.innerHTML = ` They hit each other until both of them <span onclick="toggleImage('first','text1')" style="color:blue"> fell </span> to the ground`;
+            text1.innerHTML = ` They hit each other until both of them <span onclick="toggleImage('first','text1')" class="clickable"> fell </span> to the ground.`;
             }
             else if (imgnum == 3) 
             { img.src = "Panel1.4-AFTERFIGHT.jpg";
-            text1.innerHTML = `Their heads were hurting, <br> even when they went to bed that night `;
+            text1.innerHTML = `Their heads were hurting, even when<br>they went to bed that night. `;
             }
             
         }
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
     </script>
 </body>
 </html>
