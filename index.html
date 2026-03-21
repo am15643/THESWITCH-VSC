@@ -9,8 +9,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bitcount+Prop+Single+Ink:wght@100..900&display=swap" 
-    rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
 
     
     <style>
@@ -34,14 +33,18 @@
             background-color: lightgoldenrodyellow;
         }
 
+        section:nth-child(even){
+            background-color: lightslategrey;
+        }
+
         h1{
             font-size: 6em;
             
         }
 
         p {
-            font-size: 3.5em;
-            font-family: 'Bitcount Prop Single Ink', sans-serif;
+            font-size: 5em;
+            font-family: 'Bangers', sans-serif;
         }
 
         #firstDIV{
@@ -52,11 +55,30 @@
 
         .clickable{
             font-style: italic;
-            margin-left: 4px;
+            margin-left: 4px; 
+            color: brown;
+        }
+
+        #SecondBG{
+            position: relative;
+            left: 600px;
+        }
+
+        #JamieSecondPanel{
+            width: 30vw;
+            height: 65vh;
+            position: absolute;
+           
+        }
+
+        #RyanSecondPanel{
+            width: 30vw;
+            height: 65vh;
+            position: relative;
+            right: 80px;
         }
 
         
-
        
     </style>
 </head>
@@ -77,12 +99,29 @@
         </section>
         
         <section>
-                <img src="Panel2-BG.jpg" 
+            <p> Then, the next day...</p>
+                <img id="SecondBG" src="Panel2-BG.jpg" 
                 data-aos="zoom-in-up"
                 data-aos-delay="500"
                 data-aos-duration="2000">
+                
+                <img id= "RyanSecondPanel"src="RyanAfterWakeUp.png"
+                    data-aos="fade-left"
+                    data-aos-delay="1000"
+                    data-aos-duration="2000">
+                    <img id= "JamieSecondPanel" src="JamieAfterWakeUp.png"
+                    data-aos="fade-right"
+                    data-aos-delay= "1000"
+                    data-aos-duration="2000">
         </section>
+
+        <section>
+            <img id= "thirdOne" src="Panel3.1-CONFUSEDTOGETHER.jpg" alt="">
+        </section>
+
     </main>
+
+
     <script> 
         let imgnum = 0;
 
@@ -93,16 +132,16 @@
             if (imgnum == 1) 
             { img.src = "Panel1.2-ANNOYED.jpg";
             text1.innerHTML = `Jamie crossed their arms, clearly annoyed.<br>
-            "You think your major is harder?" "At least mine actually matters! Ryan snapped. Soon the argument escalated to a <br>
+            Ryan snapped as well. Soon the argument <br> escalated to a <br>
               <span onclick="toggleImage('first','text1')" class="clickable"> fight. </span>`;
             } 
             else if (imgnum == 2) 
             { img.src = "Panel1.3-FIGHT.jpg";
-            text1.innerHTML = ` They hit each other until both of them <span onclick="toggleImage('first','text1')" class="clickable"> fell </span> to the ground.`;
+            text1.innerHTML = ` They hit each other until both <br> of them <span onclick="toggleImage('first','text1')" class="clickable"> fell </span> to the ground.`;
             }
             else if (imgnum == 3) 
             { img.src = "Panel1.4-AFTERFIGHT.jpg";
-            text1.innerHTML = `Their heads were hurting, even when<br>they went to bed that night. `;
+            text1.innerHTML = `Their heads were hurting, even <br> when they went to bed that night. `;
             }
             
         }
