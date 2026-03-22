@@ -18,7 +18,15 @@
             margin: 0;
         }
 
-        
+        img{
+            border-radius: 10%;
+            
+        }
+
+        .BackGround{
+            box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5);
+
+        }
         section{
             width: 100vw;
             height: 100vh;
@@ -30,7 +38,7 @@
             }
 
         section:nth-child(odd){
-            background-color: lightgoldenrodyellow;
+             background-color: lightslategrey;
         }
 
         section:nth-child(even){
@@ -38,12 +46,17 @@
         }
 
         h1{
-            font-size: 6em;
-            
+            font-size: 9em; 
+            font-family: 'Bangers', sans-serif;
         }
 
         p {
-            font-size: 5em;
+            font-size: 3em;
+            font-family: 'Bangers', sans-serif;
+        }
+
+        center{
+            font-size: 3em;
             font-family: 'Bangers', sans-serif;
         }
 
@@ -60,14 +73,17 @@
         }
 
         #SecondBG{
-            position: relative;
-            left: 600px;
+            display: flex;
+            align-items: flex-end;
+            
         }
+
 
         #JamieSecondPanel{
             width: 30vw;
             height: 65vh;
             position: absolute;
+            right: 1400px;
            
         }
 
@@ -75,21 +91,44 @@
             width: 30vw;
             height: 65vh;
             position: relative;
-            right: 80px;
+            right: 600px;
         }
 
-        
+        .flexBox{
+            display: flex;
+        }
+
+
+        .thirdCont{
+            position: relative;
+        }
+
+        .onTop{
+            position: absolute;
+            left: 35%;
+            top: 5%;
+        }
+
+        button{
+            position: absolute;
+            left: 43%;
+            bottom: 5%;
+            font-size: 50px;
+            font-family: 'Bangers', sans-serif;
+            background-color: transparent;
+            border-radius: 5%;
+        }
        
     </style>
 </head>
 <body>
     <main>
         <section>
-            <h1 id=""> THE SWITCH </h1>
+            <h1> THE SWITCH </h1>
         </section>
 
         <section class="container">
-            <img id="first" src="Panel1.1-IDLE.jpg" alt="">
+            <img class="BackGround" id="first" src="Panel1.1-IDLE.jpg" alt="">
             <div id="firstDIV">
                 <p id="text1">Ryan, a computer science major, and Jamie,<br>
                     a business major were talking in D2. <br> 
@@ -100,24 +139,34 @@
         
         <section>
             <p> Then, the next day...</p>
-                <img id="SecondBG" src="Panel2-BG.jpg" 
+                <img class="BackGround" id="SecondBG" src="Panel2-BG.jpg" 
                 data-aos="zoom-in-up"
                 data-aos-delay="500"
                 data-aos-duration="2000">
-                
-                <img id= "RyanSecondPanel"src="RyanAfterWakeUp.png"
+            <div class="flexBox">
+                <div> <img id= "RyanSecondPanel"src="RyanAfterWakeUp.png"
                     data-aos="fade-left"
                     data-aos-delay="1000"
-                    data-aos-duration="2000">
-                    <img id= "JamieSecondPanel" src="JamieAfterWakeUp.png"
+                    data-aos-duration="2000"></div>
+                <div> <img id= "JamieSecondPanel" src="JamieAfterWakeUp.png"
                     data-aos="fade-right"
                     data-aos-delay= "1000"
-                    data-aos-duration="2000">
+                    data-aos-duration="2000"></div>
+            </div>
         </section>
 
-        <section>
-            <img id= "thirdOne" src="Panel3.1-CONFUSEDTOGETHER.jpg" alt="">
+        <section class="thirdCont">
+            <div class="onTop">
+                <center id="text3">
+                And so they had to live as each other for a day. <br>
+                    Jamie as Ryan. <br> Ryan as Jamie.
+                </center>
+            </div>
+                <img class="BackGround" id= "thirdOne" src="Panel3.1-CONFUSEDTOGETHER.jpg" alt="">
+                <button id= "showIMG"onclick="revealImage()"> How did it go?</button>
         </section>
+
+    
 
     </main>
 
@@ -144,6 +193,25 @@
             text1.innerHTML = `Their heads were hurting, even <br> when they went to bed that night. `;
             }
             
+        }
+        
+        let isFirst = true;
+        
+        function revealImage(){
+            const img = document.getElementById("thirdOne");
+            const text = document.getElementById("text3")
+
+            if (isFirst) {
+                img.src = "Panel3.1-CONFUSEDTOGETHER.jpg";
+                text.innerHTML = `And so they had to live as each other for a day. <br>
+                    Jamie as Ryan. <br> Ryan as Jamie.`
+            } else {
+                img.src = "Panel3.2-DESPERATETOGETHER.jpg";
+                text.innerHTML = `Not so well! They are both struggling with each other's majors!
+                <br> Jamie is not a computer scientist. <br> Ryan has nothing to do with business.`
+            }
+
+            isFirst = !isFirst;
         }
     </script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
