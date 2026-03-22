@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style1.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Google Fonts: Bangers, Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">    
+
+    <title>The Switch</title>
+</head>
+<body>
+    <h1>The Switch</h1>
+
+    <div class="panel1" id="panel1">
+        <div class="panel-box" id="panelBox">
+            <img id="panel-image" src="assets/Panel1.1-IDLE.jpg">
+
+            <div class="impact-word" id="impactWord">THUD</div>
+            
+            <p id="panel-text"> Jamie and Ryan are two best friends, and they agree on most things, however, one things lingers. Jamie, who's a business student, and Ryan, who studies engineering, were talking in D2. The difficultness of their majors came up in their conversation, prompting an argument. </p>
+
+            <button class="prev" id="prevBtn">&lt;</button>
+            <button class="next" id="nextBtn">&gt;</button>
+        </div> 
+    </div>
+
+    <div class="panel2" id="panel2">
+        <div class="panel2-scene">
+            <img class="BackGround" id="SecondBG" src="assets/Panel2-BG.jpg"
+            data-aos="zoom-in-up"
+            data-aos-delay="300"
+            data-aos-duration="1600">
+
+        <div class="side left-side"
+            data-aos="fade-right"
+            data-aos-delay="900"
+            data-aos-duration="1400">
+
+            <img id="RyanSecondPanel" src="assets/RyanAfterWakeUp.png"
+            >
+        </div>
+
+        <div class="side right-side"
+            data-aos="fade-left"
+            data-aos-delay="900"
+            data-aos-duration="1400">
+
+            <img id="JamieSecondPanel" src="assets/JamieAfterWakeUp.png">
+        </div>
+
+        <div class="panel2-text-wrap"
+            data-aos="fade-up"
+            data-aos-delay="1400"
+            data-aos-duration="1000">
+            <p class="panel2-text">The morning after.</p>
+        </div>
+    </div>
+    </div>
+
+    <section class="panel3" id="panel3">
+    <div class="panel3-box">
+        <img id="panel3-image" src="assets/Panel3.1-CONFUSEDTOGETHER.jpg" alt="Jamie and Ryan confused in each other's roles.">
+
+        <div class="panel3-text-wrap">
+            <p class="panel3-text" id="panel3-text">
+                And so they had to live as each other for a day. Jamie as Ryan. Ryan as Jamie.
+            </p>
+        </div>
+    </div>
+
+    <div class="panel3-controls">
+        <button class="panel3-action-btn" id="panel3RevealBtn" type="button">
+            How did it go?
+        </button>
+    </div>
+
+    <div class="panel3-help" id="panel3Help">
+        <article class="help-card coding-card">
+            <h2>Help Jamie</h2>
+            <p class="help-subtitle">He has to survive coding class.</p>
+            <div class="help-display" id="jamieHelpDisplay">
+                Click below to help Jamie debug.
+            </div>
+            <button class="help-btn" id="helpJamieBtn" type="button">Give coding help</button>
+        </article>
+
+        <article class="help-card business-card">
+            <h2>Help Ryan</h2>
+            <p class="help-subtitle">He has to survive business class.</p>
+            <div class="help-display" id="ryanHelpDisplay">
+                Click below to help Ryan sound like a business major.
+            </div>
+            <button class="help-btn" id="helpRyanBtn" type="button">Give business help</button>
+        </article>
+    </div>
+</section>
+
+    <script src="script.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true,
+            mirror: false,
+            offset: 120,
+            duration: 1000
+        });
+    </script>
+</body>
+</html>
