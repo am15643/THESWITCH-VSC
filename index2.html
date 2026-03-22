@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webcomic</title>
+    <link href="style.css" rel="stylessheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+
+    
+    <style>
+
+        *{
+            margin: 0;
+        }
+
+        img{
+            border-radius: 10%;
+            
+        }
+
+        .BackGround{
+            box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5);
+
+        }
+        section{
+            width: 800vw;
+            height: 700vh;
+            padding: 2em;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            }
+
+        section:nth-child(odd){
+             background-color: lightslategrey;
+        }
+
+        section:nth-child(even){
+            background-color: lightslategrey;
+        }
+
+        h1{
+            font-size: 9em; 
+            font-family: 'Bangers', sans-serif;
+        }
+
+        p {
+            font-size: 3em;
+            font-family: 'Bangers', sans-serif;
+        }
+
+        center{
+            font-size: 3em;
+            font-family: 'Bangers', sans-serif;
+        }
+
+        #firstDIV{
+            display: flex;
+            align-items: flex-end;
+            margin-left: 50px;
+        }
+
+        .clickable{
+            font-style: italic;
+            margin-left: 4px; 
+            color: brown;
+        }
+
+        #SecondBG{
+            display: flex;
+            align-items: flex-end;
+            
+        }
+
+
+        #JamieSecondPanel{
+            width: 30vw;
+            height: 65vh;
+            position: absolute;
+            right: 1400px;
+           
+        }
+
+        #RyanSecondPanel{
+            width: 30vw;
+            height: 65vh;
+            position: relative;
+            right: 600px;
+        }
+
+        .flexBox{
+            display: flex;
+        }
+
+
+        .thirdCont{
+            position: relative;
+        }
+
+        .onTop{
+            position: absolute;
+            left: 35%;
+            top: 5%;
+        }
+
+        button{
+            position: absolute;
+            left: 43%;
+            bottom: 5%;
+            font-size: 50px;
+            font-family: 'Bangers', sans-serif;
+            background-color: transparent;
+            border-radius: 5%;
+        }
+       
+    </style>
+</head>
+<body>
+    <main>
+        <section>
+            <h1> THE SWITCH </h1>
+        </section>
+
+        <section class="container">
+            <img class="BackGround" id="first" src="Panel1.1-IDLE.jpg" alt="">
+            <div id="firstDIV">
+                <p id="text1">Ryan, a computer science major, and Jamie,<br>
+                    a business major were talking in D2. <br> 
+                The difficultness of their majors came up <br> in
+                their conversation, prompting an<span onclick="toggleImage('first','text1')" class="clickable">argument.</span></p>
+            </div>
+        </section>
+        
+        <section>
+            <p> Then, the next day...</p>
+                <img class="BackGround" id="SecondBG" src="Panel2-BG.jpg" 
+                data-aos="zoom-in-up"
+                data-aos-delay="500"
+                data-aos-duration="2000">
+            <div class="flexBox">
+                <div> <img id= "RyanSecondPanel"src="RyanAfterWakeUp.png"
+                    data-aos="fade-left"
+                    data-aos-delay="1000"
+                    data-aos-duration="2000"></div>
+                <div> <img id= "JamieSecondPanel" src="JamieAfterWakeUp.png"
+                    data-aos="fade-right"
+                    data-aos-delay= "1000"
+                    data-aos-duration="2000"></div>
+            </div>
+        </section>
+
+        <section class="thirdCont">
+            <div class="onTop">
+                <center id="text3">
+                And so they had to live as each other for a day. <br>
+                    Jamie as Ryan. <br> Ryan as Jamie.
+                </center>
+            </div>
+                <img class="BackGround" id= "thirdOne" src="Panel3.1-CONFUSEDTOGETHER.jpg" alt="">
+                <button id= "showIMG"onclick="revealImage()"> How did it go?</button>
+        </section>
+
+    
+
+    </main>
+
+
+    <script> 
+        let imgnum = 0;
+
+        function toggleImage(imgname, textname) {
+            const img = document.getElementById(imgname);
+            const text1 = document.getElementById(textname);
+            imgnum += 1;
+            if (imgnum == 1) 
+            { img.src = "Panel1.2-ANNOYED.jpg";
+            text1.innerHTML = `Jamie crossed their arms, clearly annoyed.<br>
+            Ryan snapped as well. Soon the argument <br> escalated to a <br>
+              <span onclick="toggleImage('first','text1')" class="clickable"> fight. </span>`;
+            } 
+            else if (imgnum == 2) 
+            { img.src = "Panel1.3-FIGHT.jpg";
+            text1.innerHTML = ` They hit each other until both <br> of them <span onclick="toggleImage('first','text1')" class="clickable"> fell </span> to the ground.`;
+            }
+            else if (imgnum == 3) 
+            { img.src = "Panel1.4-AFTERFIGHT.jpg";
+            text1.innerHTML = `Their heads were hurting, even <br> when they went to bed that night. `;
+            }
+            
+        }
+        
+        let isFirst = true;
+        
+        function revealImage(){
+            const img = document.getElementById("thirdOne");
+            const text = document.getElementById("text3")
+
+            if (isFirst) {
+                img.src = "Panel3.1-CONFUSEDTOGETHER.jpg";
+                text.innerHTML = `And so they had to live as each other for a day. <br>
+                    Jamie as Ryan. <br> Ryan as Jamie.`
+            } else {
+                img.src = "Panel3.2-DESPERATETOGETHER.jpg";
+                text.innerHTML = `Not so well! They are both struggling with each other's majors!
+                <br> Jamie is not a computer scientist. <br> Ryan has nothing to do with business.`
+            }
+
+            isFirst = !isFirst;
+        }
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+</html>
