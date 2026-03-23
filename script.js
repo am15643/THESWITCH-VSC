@@ -2,20 +2,24 @@ const slides = [
     {
         image: "assets/Panel1.1-IDLE.jpg",
         text: "Jamie and Ryan are two best friends, and they agree on most things, however, one things lingers. Jamie, who's a business student, and Ryan, who studies engineering, were talking in D2. The difficultness of their majors came up in their conversation, prompting an argument.",
-        speechLeft: "assets/1.png",
-        speechRight: null
+        speechLeft: "assets/1.1.png",
+        speechRight: "assets/1.2.png"
     },
     {
         image: "assets/Panel1.2-ANNOYED.jpg",
         text: "Jamie clenched his fists, clearly annoyed. Ryan snapped as well. Soon the argument escalated to a fight.",
-        speechLeft: "assets/2.png",
-        speechRight: "assets/3.png"
+        speechLeft: "assets/2.1.png",
+        speechRight: "assets/2.2.png"
     },
     {
         image: "assets/Panel1.3-FIGHT.jpg",
         text: "They hit each other until both of them fell to the ground.",
-        speechLeft: null,
-        speechRight: null
+        speechLeft: "assets/3.1.png",
+        speechRight: "assets/3.2.png",
+        leftPos: "35%",
+        topLeft: "10%",
+        rightPos: "28%",
+        topRight: "10%"
     },
     {
         image: "assets/Panel1.4-AFTERFIGHT.jpg",
@@ -55,30 +59,23 @@ function showSlide(index) {
 
     if (sl) {
         speechLeft.src = sl;
-        if (index === 0) {
-            speechLeft.style.left = "50%";
-            speechLeft.style.transform = "translateX(-50%)";
-            speechLeft.style.width = "25%";
-            speechLeft.style.display = "";
-            triggerAnimation(speechLeft, 'speech-pop-center');
-        } else {
-            speechLeft.style.left = "30%";
-            speechLeft.style.transform = "";
-            speechLeft.style.width = "18%";
-            speechLeft.style.display = "";
-            triggerAnimation(speechLeft, 'speech-slide-left');
-        }
+        speechLeft.style.left = slides[index].leftPos || "30%";
+        speechLeft.style.top = slides[index].topLeft || "0";
+        speechLeft.style.transform = "";
+        speechLeft.style.width = "18%";
+        speechLeft.style.display = "";
+        triggerAnimation(speechLeft, 'speech-slide-left');
     } else {
         if (speechLeft.style.display !== "none") {
-            const isCentered = speechLeft.style.left === "50%";
-            triggerAnimation(speechLeft, isCentered ? 'speech-dismiss-center' : 'speech-dismiss');
+            triggerAnimation(speechLeft, 'speech-dismiss');
             setTimeout(() => { speechLeft.style.display = "none"; }, 200);
         }
     }
 
     if (sr) {
         speechRight.src = sr;
-        speechRight.style.right = "30%";
+        speechRight.style.right = slides[index].rightPos || "30%";
+        speechRight.style.top = slides[index].topRight || "0";
         speechRight.style.width = "18%";
         speechRight.style.display = "";
         triggerAnimation(speechRight, 'speech-slide-right');
@@ -174,9 +171,10 @@ panel3RevealBtn?.addEventListener("click", () => {
             panel3Image.classList.add("flip-in");
             if (speechPanel3) {
                 speechPanel3.src = "assets/7.png";
-                speechPanel3.style.left = "50%";
+                speechPanel3.style.left = "55%";
+                speechPanel3.style.top = "13%";
                 speechPanel3.style.right = "auto";
-                speechPanel3.style.transform = "translateX(-50%)";
+                speechPanel3.style.transform = "translateX(-50%) translateY(-50%)";
                 speechPanel3.classList.remove('speech-pop-scale', 'speech-dismiss-center');
                 void speechPanel3.offsetWidth;
                 speechPanel3.classList.add('speech-pop-scale');
