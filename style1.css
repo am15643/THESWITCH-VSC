@@ -50,6 +50,18 @@ h1 {
     position: relative;
     display: inline-block;
     border-radius: 20px;
+    overflow: visible;
+}
+
+.panel2-scene {
+    position: relative;
+    overflow: visible;
+}
+
+.panel3-box {
+    position: relative;
+    display: inline-block;
+    overflow: visible;
 }
 
 .panel-box img {
@@ -266,10 +278,7 @@ button:hover.next {
     gap: 24px;
 }
 
-.panel3-box {
-    position: relative;
-    display: inline-block;
-}
+
 
 .panel3-box img {
     display: block;
@@ -493,6 +502,15 @@ button:hover.next {
 @keyframes bubbleDismissCenter {
     0%   { opacity: 1; transform: translateX(-50%) scale(1); }
     100% { opacity: 0; transform: translateX(-50%) scale(0.4); }
+}
+
+.speech-pop-center,
+.speech-slide-left,
+.speech-slide-right,
+.speech-drop-left,
+.speech-drop-right,
+.speech-pop-scale {
+    will-change: transform, opacity;
 }
 
 .speech-pop-center {
