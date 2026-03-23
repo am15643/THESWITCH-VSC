@@ -19,7 +19,11 @@
 
     <div class="panel1" id="panel1">
         <div class="panel-box" id="panelBox">
-            <img id="panel-image" src="assets/Panel1.1-IDLE.jpg">
+            <div style="position: relative; display: inline-block;">
+                <img id="panel-image" src="assets/Panel1.1-IDLE.jpg">
+                <img id="speech-left" src="assets/1.png" alt="speech bubble" style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 25%; pointer-events: none; border: none !important; border-radius: 0 !important; box-shadow: none !important;">
+                <img id="speech-right" src="" alt="" style="position: absolute; top: 0; right: 25%; width: 18%; pointer-events: none; border: none !important; border-radius: 0 !important; box-shadow: none !important; display: none;">
+            </div>
 
             <div class="impact-word" id="impactWord">THUD</div>
             
@@ -31,7 +35,7 @@
     </div>
 
     <div class="panel2" id="panel2">
-        <div class="panel2-scene">
+        <div class="panel2-scene" style="position: relative;">
             <img class="BackGround" id="SecondBG" src="assets/Panel2-BG.jpg"
             data-aos="zoom-in-up"
             data-aos-delay="300"
@@ -54,6 +58,8 @@
             <img id="JamieSecondPanel" src="assets/JamieAfterWakeUp.png">
         </div>
 
+        <img id="speech-panel2-left" src="assets/5.png" alt="" style="position: absolute; top: 0; left: 0; width: 20%; pointer-events: none; border: none; box-shadow: none; z-index: 3; opacity: 0;">
+        <img id="speech-panel2-right" src="assets/4.png" alt="" style="position: absolute; top: 0; right: 0; width: 20%; pointer-events: none; border: none; box-shadow: none; z-index: 3; opacity: 0;">
         <div class="panel2-text-wrap"
             data-aos="fade-up"
             data-aos-delay="1400"
@@ -64,8 +70,9 @@
     </div>
 
     <section class="panel3" id="panel3">
-    <div class="panel3-box">
+    <div class="panel3-box" style="position: relative;">
         <img id="panel3-image" src="assets/Panel3.1-CONFUSEDTOGETHER.jpg" alt="Jamie and Ryan confused in each other's roles.">
+        <img id="speech-panel3" src="assets/6.png" alt="" class="speech-pop-scale" style="position: absolute; top: -8%; left: 25%; width: 25%; pointer-events: none; border: none; box-shadow: none; z-index: 3;">
 
         <div class="panel3-text-wrap">
             <p class="panel3-text" id="panel3-text">
