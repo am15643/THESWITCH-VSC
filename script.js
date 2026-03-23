@@ -1,19 +1,27 @@
 const slides = [
     {
         image: "assets/Panel1.1-IDLE.jpg",
-        text: "Jamie and Ryan are two best friends, and they agree on most things, however, one things lingers. Jamie, who's a business student, and Ryan, who studies engineering, were talking in D2. The difficultness of their majors came up in their conversation, prompting an argument."
+        text: "Jamie and Ryan are two best friends, and they agree on most things, however, one things lingers. Jamie, who's a business student, and Ryan, who studies engineering, were talking in D2. The difficultness of their majors came up in their conversation, prompting an argument.",
+        speechLeft: "assets/1.png",
+        speechRight: null
     },
     {
         image: "assets/Panel1.2-ANNOYED.jpg",
-        text: "Jamie clenched his fists, clearly annoyed. Ryan snapped as well. Soon the argument escalated to a fight."
+        text: "Jamie clenched his fists, clearly annoyed. Ryan snapped as well. Soon the argument escalated to a fight.",
+        speechLeft: "assets/2.png",
+        speechRight: "assets/3.png"
     },
     {
         image: "assets/Panel1.3-FIGHT.jpg",
-        text: "They hit each other until both of them fell to the ground."
+        text: "They hit each other until both of them fell to the ground.",
+        speechLeft: null,
+        speechRight: null
     },
     {
         image: "assets/Panel1.4-AFTERFIGHT.jpg",
-        text: "Their heads were pounding and that pain carried on throughout the night."
+        text: "Their heads were pounding and that pain carried on throughout the night.",
+        speechLeft: null,
+        speechRight: null
     }
 ];
 
@@ -26,10 +34,60 @@ const prevBtn = document.getElementById("prevBtn");
 const nextBtn = document.getElementById("nextBtn");
 const nextPanel = document.getElementById("panel2");
 const panelBox = document.getElementById("panelBox");
+const speechLeft = document.getElementById("speech-left");
+const speechRight = document.getElementById("speech-right");
+
+function triggerAnimation(el, className) {
+    el.classList.remove(
+        'speech-pop-center', 'speech-slide-left', 'speech-slide-right',
+        'speech-pop-scale', 'speech-dismiss', 'speech-dismiss-center'
+    );
+    void el.offsetWidth; // reflow to restart
+    el.classList.add(className);
+}
 
 function showSlide(index) {
     panelImage.src = slides[index].image;
     panelText.textContent = slides[index].text;
+
+    const sl = slides[index].speechLeft;
+    const sr = slides[index].speechRight;
+
+    if (sl) {
+        speechLeft.src = sl;
+        if (index === 0) {
+            speechLeft.style.left = "50%";
+            speechLeft.style.transform = "translateX(-50%)";
+            speechLeft.style.width = "25%";
+            speechLeft.style.display = "";
+            triggerAnimation(speechLeft, 'speech-pop-center');
+        } else {
+            speechLeft.style.left = "30%";
+            speechLeft.style.transform = "";
+            speechLeft.style.width = "18%";
+            speechLeft.style.display = "";
+            triggerAnimation(speechLeft, 'speech-slide-left');
+        }
+    } else {
+        if (speechLeft.style.display !== "none") {
+            const isCentered = speechLeft.style.left === "50%";
+            triggerAnimation(speechLeft, isCentered ? 'speech-dismiss-center' : 'speech-dismiss');
+            setTimeout(() => { speechLeft.style.display = "none"; }, 200);
+        }
+    }
+
+    if (sr) {
+        speechRight.src = sr;
+        speechRight.style.right = "30%";
+        speechRight.style.width = "18%";
+        speechRight.style.display = "";
+        triggerAnimation(speechRight, 'speech-slide-right');
+    } else {
+        if (speechRight.style.display !== "none") {
+            triggerAnimation(speechRight, 'speech-dismiss');
+            setTimeout(() => { speechRight.style.display = "none"; }, 200);
+        }
+    }
 }
 
 nextBtn.addEventListener("click", () => {
@@ -108,10 +166,21 @@ panel3RevealBtn?.addEventListener("click", () => {
         panel3Image.classList.remove("flip-in");
         panel3Image.classList.add("flip-out");
 
+        const speechPanel3 = document.getElementById("speech-panel3");
+
         setTimeout(() => {
             panel3Image.src = "assets/Panel3.2-DESPERATETOGETHER.jpg";
             panel3Image.classList.remove("flip-out");
             panel3Image.classList.add("flip-in");
+            if (speechPanel3) {
+                speechPanel3.src = "assets/7.png";
+                speechPanel3.style.left = "50%";
+                speechPanel3.style.right = "auto";
+                speechPanel3.style.transform = "translateX(-50%)";
+                speechPanel3.classList.remove('speech-pop-scale', 'speech-dismiss-center');
+                void speechPanel3.offsetWidth;
+                speechPanel3.classList.add('speech-pop-scale');
+            }
         }, 180);
 
         panel3Text.textContent = "Not so well. They are both struggling with each other's majors.";
@@ -126,6 +195,28 @@ panel3RevealBtn?.addEventListener("click", () => {
         });
     }
 });
+
+// Trigger panel2 speech bubbles only when scrolled into view
+const p2left = document.getElementById("speech-panel2-left");
+const p2right = document.getElementById("speech-panel2-right");
+
+const panel2Observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            setTimeout(() => {
+                p2left.style.opacity = "";
+                p2left.classList.add("speech-slide-left");
+            }, 200);
+            setTimeout(() => {
+                p2right.style.opacity = "";
+                p2right.classList.add("speech-slide-right");
+            }, 400);
+            panel2Observer.disconnect();
+        }
+    });
+}, { threshold: 0.4 });
+
+panel2Observer.observe(document.getElementById("panel2"));
 
 helpJamieBtn?.addEventListener("click", () => {
     jamieHelpDisplay.textContent = jamieHelps[jamieHelpIndex];
