@@ -108,15 +108,104 @@
     </div>
 </section>
 
+    <!-- PANEL 4: Split scenes (Jamie/Ryan struggling) -->
+    <section class="panel4" id="panel4-split">
+        <h2 class="panel-heading" data-aos="zoom-in" data-aos-duration="800">Panel 4 — Attempt to Show Off</h2>
+        <div class="split-row">
+            <div class="half-scene">
+                <img src="assets/panel3_ryan_scene1.png" alt="Jamie in coding class">
+                <p class="scene-caption" data-aos="zoom-in" data-aos-duration="900">Jamie remembers Ryan has a coding exam today. He tries to plug everything into ChatGPT — but the code doesn't work.</p>
+            </div>
+            <div class="half-scene">
+                <img src="assets/panel3_jamie_scene1.png" alt="Ryan in business class">
+                <p class="scene-caption" data-aos="zoom-in" data-aos-duration="900">Ryan remembers Jamie has a business presentation today. He looks at the slides and realizes he doesn't understand a single financial term.</p>
+            </div>
+        </div>
+        <div class="split-row">
+            <div class="half-scene">
+                <img src="assets/panel3_ryan_scene2.png" alt="Jamie stressed">
+                <p class="scene-caption" data-aos="zoom-in" data-aos-duration="900">Jamie has 10 minutes left. He stresses out and desperately wishes they could switch back. Time freezes.</p>
+            </div>
+            <div class="half-scene">
+                <img src="assets/panel3_jamie_scene2.png" alt="Ryan stressed">
+                <p class="scene-caption" data-aos="zoom-in" data-aos-duration="900">Ryan gets called to present but can't say a single meaningful thing. He wishes the same. Time freezes.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PANEL 5: Redemption (dark) -->
+    <section class="panel5" id="panel5-redemption">
+        <h2 class="panel-heading" data-aos="zoom-in" data-aos-duration="800">Panel 5 — Redemption</h2>
+        <div class="full-scene">
+            <img src="assets/panel4_scene1.png" alt="Blackout ghost world" data-aos="zoom-in" data-aos-duration="900">
+            <p class="scene-caption" data-aos="zoom-in" data-aos-duration="900">Blackout. Both transition to a mysterious world — their minds in ghost form.</p>
+        </div>
+        <div class="full-scene">
+            <img src="assets/panel4_scene2.png" alt="They look at each other with regret" data-aos="zoom-in" data-aos-duration="900">
+            <p class="scene-caption" data-aos="zoom-in" data-aos-duration="900">They look at each other with regret and admit they were wrong about each other's major.</p>
+        </div>
+        <div class="full-scene">
+            <img src="assets/panel4_scene3.png" alt="They shake hands" data-aos="zoom-in" data-aos-duration="900">
+            <p class="scene-caption" data-aos="zoom-in" data-aos-duration="900">They apologize and shake hands, promising to never argue about majors again.</p>
+        </div>
+    </section>
+
+    <!-- PANEL 6: Last Minute Comeback (light) -->
+    <section class="panel6" id="panel6-comeback">
+        <h2 class="panel-heading" data-aos="zoom-in" data-aos-duration="800">Panel 6 — Last Minute Comeback</h2>
+        <p class="scene-caption" style="text-align:center; max-width: 800px; margin: 0 auto 40px;" data-aos="zoom-in" data-aos-duration="800">As soon as they shake hands, they transition back to their own bodies — at the exact moment time stopped.</p>
+        <div class="split-row">
+            <div class="half-scene">
+                <img src="assets/panel5_jamie_scene1.png" alt="Jamie back in his body" data-aos="zoom-in" data-aos-duration="900">
+                <p class="scene-caption" data-aos="zoom-in" data-aos-duration="900">Jamie happily looks at his hands — he's back.</p>
+            </div>
+            <div class="half-scene">
+                <img src="assets/panel5_ryan_scene1.png" alt="Ryan back in his body" data-aos="zoom-in" data-aos-duration="900">
+                <p class="scene-caption" data-aos="zoom-in" data-aos-duration="900">Ryan happily looks at his hands — he's back.</p>
+            </div>
+        </div>
+        <div class="split-row">
+            <div class="half-scene">
+                <img src="assets/panel5_jamie_scene2.png" alt="Jamie presenting" data-aos="zoom-in" data-aos-duration="900">
+                <p class="scene-caption" data-aos="zoom-in" data-aos-duration="900">Jamie confidently delivers his presentation.</p>
+            </div>
+            <div class="half-scene">
+                <img src="assets/panel5_ryan_scene2.png" alt="Ryan coding" data-aos="zoom-in" data-aos-duration="900">
+                <p class="scene-caption" data-aos="zoom-in" data-aos-duration="900">Ryan immediately knows what to code and finishes on time.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PANEL 7: Conclusion -->
+    <section class="panel7" id="panel7-conclusion">
+        <div class="conclusion-text" data-aos="zoom-in" data-aos-duration="1000">
+            <p>Jamie aced his presentation, having the class applauding.</p>
+            <p>Ryan wrote the best code in the class and was invited to work as a research assistant with his professor.</p>
+            <p class="conclusion-moral">There are no easy majors.<br>What matters is that you do what you love.</p>
+        </div>
+    </section>
+
     <script src="script.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- GSAP + ScrollTrigger for dark/light mode -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
     <script>
-        AOS.init({
-            once: true,
-            mirror: false,
-            offset: 120,
-            duration: 1000
-        });
+        AOS.init({ once: true, mirror: false, offset: 120, duration: 1000 });
+
+        gsap.registerPlugin(ScrollTrigger);
+
+        const darkMode = () => {
+            gsap.to("body", { backgroundColor: "#000000", duration: 0.8, overwrite: "auto" });
+            gsap.to(".panel-heading, .scene-caption", { color: "#ffffff", duration: 0.8, overwrite: "auto" });
+        };
+        const lightMode = () => {
+            gsap.to("body", { backgroundColor: "#161922", duration: 0.8, overwrite: "auto" });
+            gsap.to(".panel-heading, .scene-caption", { color: "#f7f2e8", duration: 0.8, overwrite: "auto" });
+        };
+
+        ScrollTrigger.create({ trigger: "#panel5-redemption", start: "top 70%", onEnter: darkMode, onLeaveBack: lightMode });
+        ScrollTrigger.create({ trigger: "#panel6-comeback", start: "top 70%", onEnter: lightMode, onLeaveBack: darkMode });
     </script>
 </body>
 </html>
