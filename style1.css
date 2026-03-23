@@ -544,3 +544,109 @@ button:hover.next {
 .speech-dismiss-center {
     animation: bubbleDismissCenter 0.2s ease forwards;
 }
+
+/* ── New panels (4–7) ── */
+
+.panel-heading {
+    font-family: "Bangers", system-ui;
+    color: #f7f2e8;
+    font-size: 52px;
+    text-align: center;
+    margin-bottom: 32px;
+    letter-spacing: 1px;
+}
+
+.split-row {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 40px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.half-scene {
+    width: calc(50% - 15px);
+    max-width: 560px;
+}
+
+.half-scene img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 4px solid black;
+    border-radius: 20px;
+    box-shadow: 8px 6px 5px black;
+}
+
+.full-scene {
+    margin-bottom: 45px;
+    text-align: center;
+}
+
+.full-scene img {
+    width: 100%;
+    max-width: 1000px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border: 4px solid black;
+    border-radius: 20px;
+    box-shadow: 8px 6px 5px black;
+}
+
+.scene-caption {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    color: #f7f2e8;
+    margin-top: 14px;
+    line-height: 1.6;
+}
+
+.panel4, .panel5, .panel6 {
+    margin-top: 120px;
+    padding: 0 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.panel7 {
+    margin-top: 120px;
+    margin-bottom: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+    padding: 0 40px;
+}
+
+.conclusion-text {
+    text-align: center;
+    max-width: 800px;
+}
+
+.conclusion-text p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 22px;
+    color: #f7f2e8;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.conclusion-moral {
+    font-family: "Bangers", system-ui;
+    font-size: 52px !important;
+    letter-spacing: 1px;
+    color: #ffcb29 !important;
+    margin-top: 40px;
+    line-height: 1.3 !important;
+}
+
+@media (max-width: 800px) {
+    .split-row { flex-direction: column; align-items: center; }
+    .half-scene { width: 100%; max-width: 100%; }
+    .panel4, .panel5, .panel6 { padding: 0 20px; }
+    .panel-heading { font-size: 38px; }
+    .conclusion-moral { font-size: 36px !important; }
+}
