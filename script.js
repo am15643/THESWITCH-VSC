@@ -144,20 +144,6 @@ let panel3Revealed = false;
 let jamieHelpIndex = 0;
 let ryanHelpIndex = 0;
 
-const jamieHelps = [
-    "Hint 1: Start with the error message. Read the first line before panicking.",
-    "Hint 2: Every C++ program needs a main() function to run.",
-    "Hint 3: Missing semicolons can break everything for absolutely no reason.",
-    "Hint 4: Jamie finally realizes coding is 10% logic and 90% debugging."
-];
-
-const ryanHelps = [
-    "Term 1: ROI = Return on Investment.",
-    "Term 2: SWOT = Strengths, Weaknesses, Opportunities, Threats.",
-    "Term 3: Elevator pitch = explain your idea clearly in under a minute.",
-    "Term 4: Ryan starts throwing around buzzwords and somehow it works."
-];
-
 panel3RevealBtn?.addEventListener("click", () => {
     if (!panel3Revealed) {
         panel3Image.classList.remove("flip-in");
@@ -216,12 +202,107 @@ const panel2Observer = new IntersectionObserver((entries) => {
 
 panel2Observer.observe(document.getElementById("panel2"));
 
-helpJamieBtn?.addEventListener("click", () => {
-    jamieHelpDisplay.textContent = jamieHelps[jamieHelpIndex];
-    jamieHelpIndex = (jamieHelpIndex + 1) % jamieHelps.length;
+const jamieAnswer = document.getElementById("jamieAnswer");
+const jamieFeedback = document.getElementById("jamieFeedback");
+
+const ryanFeedback = document.getElementById("ryanFeedback");
+
+helpJamieBtn.addEventListener("click", () => {
+    const answer = jamieAnswer.value.trim().toLowerCase();
+
+    jamieFeedback.classList.remove("feedback-correct", "feedback-wrong");
+
+    if (answer === "h1>" || answer === "h1")  {
+        jamieFeedback.textContent = "Correct! The full code is <h1>Welcome</h1>.";
+        jamieFeedback.classList.add("feedback-correct");
+    } else if (answer === "") {
+        jamieFeedback.textContent = "Type a tag first.";
+        jamieFeedback.classList.add("feedback-wrong");
+    } else {
+        jamieFeedback.textContent = "Not quite. Hint: this is a heading tag.";
+        jamieFeedback.classList.add("feedback-wrong");
+    }
 });
 
-helpRyanBtn?.addEventListener("click", () => {
-    ryanHelpDisplay.textContent = ryanHelps[ryanHelpIndex];
-    ryanHelpIndex = (ryanHelpIndex + 1) % ryanHelps.length;
+helpRyanBtn.addEventListener("click", () => {
+    const selected = document.querySelector('input[name="ryanQuestion"]:checked');
+
+    ryanFeedback.classList.remove("feedback-correct", "feedback-wrong");
+
+    if (!selected) {
+        ryanFeedback.textContent = "Pick an answer first.";
+        ryanFeedback.classList.add("feedback-wrong");
+        return;
+    }
+
+    if (selected.value === "A") {
+        ryanFeedback.textContent = "Correct! Profit is the money left after costs.";
+        ryanFeedback.classList.add("feedback-correct");
+    } else {
+        ryanFeedback.textContent = "Not correct. The right answer is A.";
+        ryanFeedback.classList.add("feedback-wrong");
+    }
 });
+
+const panel6Slides = [
+    {
+        image: "assets/panel5_jamie_scene1.png",
+        text: "Jamie happily looks at his hands — he's back."
+    },
+    {
+        image: "assets/panel5_ryan_scene1.png",
+        text: "Ryan happily looks at his hands — he's back."
+    },
+    {
+        image: "assets/panel5_jamie_scene2.png",
+        text: "Jamie confidently delivers his presentation."
+    },
+    {
+        image: "assets/panel5_ryan_scene2.png",
+        text: "Ryan immediately knows what to code and finishes on time."
+    }
+];
+
+let currentPanel6Slide = 0;
+
+const panel6Image = document.getElementById("panel6-image");
+const panel6Text = document.getElementById("panel6-text");
+const panel6PrevBtn = document.getElementById("panel6PrevBtn");
+const panel6NextBtn = document.getElementById("panel6NextBtn");
+
+function showPanel6Slide(index) {
+    panel6Image.src = panel6Slides[index].image;
+    panel6Text.textContent = panel6Slides[index].text;
+}
+
+panel6NextBtn.addEventListener("click", () => {
+    if (currentPanel6Slide < panel6Slides.length - 1) {
+        currentPanel6Slide++;
+        showPanel6Slide(currentPanel6Slide);
+    } else {
+        unlockPanel(panel7Conclusion);
+        panel7Conclusion.scrollIntoView({ behavior: "smooth" });
+    }
+});
+
+panel6PrevBtn.addEventListener("click", () => {
+    if (currentPanel6Slide > 0) {
+        currentPanel6Slide--;
+        showPanel6Slide(currentPanel6Slide);
+    }
+});
+
+showPanel6Slide(currentPanel6Slide);
+
+const panel7Conclusion = document.getElementById("panel7-conclusion");
+
+let jamieAttempted = false;
+let ryanAttempted = false;
+let redemptionUnlocked = false;
+
+function unlockPanel(el) {
+    if (!el) return;
+    el.classList.remove("panel-locked");
+    el.setAttribute("aria-hidden", "false");
+    if (window.AOS) AOS.refreshHard();
+}

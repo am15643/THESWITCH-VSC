@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="style.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
@@ -15,8 +16,11 @@
     <title>The Switch</title>
 </head>
 <body>
+
+    <!-- panel 1: argument (slideshow) -->
     <h1>The Switch</h1>
 
+    
     <div class="panel1" id="panel1">
         <div class="panel-box" id="panelBox">
             <div style="position: relative; display: inline-block;">
@@ -33,6 +37,8 @@
             <button class="next" id="nextBtn">&gt;</button>
         </div> 
     </div>
+
+
 
     <div class="panel2" id="panel2">
         <div class="panel2-scene" style="position: relative;">
@@ -91,19 +97,51 @@
         <article class="help-card coding-card">
             <h2>Help Jamie</h2>
             <p class="help-subtitle">He has to survive coding class.</p>
+
             <div class="help-display" id="jamieHelpDisplay">
-                Click below to help Jamie debug.
+                <p class="quiz-label"><strong>Complete the HTML code:</strong></p>
+
+                <pre class="code-box">&lt;<input type="text" id="jamieAnswer" class="inline-code-input" placeholder="tag">Welcome&lt;/h1&gt;</pre>
+
+                <p class="quiz-hint">What should replace the blank?</p>
+                <p class="quiz-feedback" id="jamieFeedback"></p>
             </div>
-            <button class="help-btn" id="helpJamieBtn" type="button">Give coding help</button>
+
+            <button class="help-btn" id="helpJamieBtn" type="button">Check code</button>
         </article>
 
         <article class="help-card business-card">
             <h2>Help Ryan</h2>
             <p class="help-subtitle">He has to survive business class.</p>
+
             <div class="help-display" id="ryanHelpDisplay">
-                Click below to help Ryan sound like a business major.
+                <p class="quiz-label"><strong>Business MCQ:</strong></p>
+                <p class="mcq-question">What is profit?</p>
+
+                <label class="mcq-option">
+                    <input type="radio" name="ryanQuestion" value="A">
+                    A. Money left after costs are subtracted from revenue
+                </label>
+
+                <label class="mcq-option">
+                    <input type="radio" name="ryanQuestion" value="B">
+                    B. The total number of products sold
+                </label>
+
+                <label class="mcq-option">
+                    <input type="radio" name="ryanQuestion" value="C">
+                    C. The money a business spends on rent only
+                </label>
+
+                <label class="mcq-option">
+                    <input type="radio" name="ryanQuestion" value="D">
+                    D. The price of one item
+                </label>
+
+                <p class="quiz-feedback" id="ryanFeedback"></p>
             </div>
-            <button class="help-btn" id="helpRyanBtn" type="button">Give business help</button>
+
+            <button class="help-btn" id="helpRyanBtn" type="button">Submit answer</button>
         </article>
     </div>
 </section>
@@ -111,12 +149,11 @@
     
     <!-- PANEL 5: Redemption (dark) -->
     <section class="panel5" id="panel5-redemption">
-        <h2 class="panel-heading" data-aos="zoom-in" data-aos-duration="800">Redemption</h2>
         <div class="full-scene">
             <div class="ghost-scene-wrap">
                 <img src="assets/panel4_scene1.png" alt="Blackout ghost world" data-aos="zoom-in" data-aos-duration="900">
                 <img src="assets/8.1.png" alt="" class="ghost-bubble ghost-bubble-right" style="right:32%; top:25%;">
-                <img src="assets/8.2.png" alt="" class="ghost-bubble ghost-bubble-left" style="left:38%; top:25%;">>>>>>
+                <img src="assets/8.2.png" alt="" class="ghost-bubble ghost-bubble-left" style="left:38%; top:25%;">
             </div>
             <p class="scene-caption" data-aos="zoom-in" data-aos-duration="900">Blackout. Both transition to a mysterious world — their minds in ghost form.</p>
         </div>
@@ -124,7 +161,7 @@
             <div class="ghost-scene-wrap">
                 <img src="assets/panel4_scene2.png" alt="They look at each other with regret" data-aos="zoom-in" data-aos-duration="900">
                 <img src="assets/9.1.png" alt="" class="ghost-bubble ghost-bubble-left" style="left:38%; top:25%;">
-                <img src="assets/9.2.png" alt="" class="ghost-bubble ghost-bubble-right" style="right:32%; top:25%;">>>>>>
+                <img src="assets/9.2.png" alt="" class="ghost-bubble ghost-bubble-right" style="right:32%; top:25%;">
             </div>
             <p class="scene-caption" data-aos="zoom-in" data-aos-duration="900">They look at each other with regret and admit they were wrong about each other's major.</p>
         </div>
@@ -132,46 +169,38 @@
             <div class="ghost-scene-wrap">
                 <img src="assets/panel4_scene3.png" alt="They shake hands" data-aos="zoom-in" data-aos-duration="900">
                 <img src="assets/10.1.png" alt="" class="ghost-bubble ghost-bubble-left" style="left:35%; top:25%;">
-                <img src="assets/10.2.png" alt="" class="ghost-bubble ghost-bubble-right" style="right:35%; top:25%;">>>>>>>
+                <img src="assets/10.2.png" alt="" class="ghost-bubble ghost-bubble-right" style="right:35%; top:25%;">
             </div>
             <p class="scene-caption" data-aos="zoom-in" data-aos-duration="900">They apologize and shake hands, promising to never argue about majors again.</p>
         </div>
     </section>
 
-    <!-- PANEL 6: Last Minute Comeback (light) -->
     <section class="panel6" id="panel6-comeback">
-        <h2 class="panel-heading" data-aos="zoom-in" data-aos-duration="800">Last Minute Comeback</h2>
-        <p class="scene-caption" style="text-align:center; max-width: 800px; margin: 0 auto 40px;" data-aos="zoom-in" data-aos-duration="800">As soon as they shake hands, they transition back to their own bodies — at the exact moment time stopped.</p>
-        <div class="split-row">
-            <div class="half-scene">
-                <img src="assets/panel5_jamie_scene1.png" alt="Jamie back in his body" data-aos="zoom-in" data-aos-duration="900">
-                <p class="scene-caption" data-aos="zoom-in" data-aos-duration="900">Jamie happily looks at his hands — he's back.</p>
-            </div>
-            <div class="half-scene">
-                <img src="assets/panel5_ryan_scene1.png" alt="Ryan back in his body" data-aos="zoom-in" data-aos-duration="900">
-                <p class="scene-caption" data-aos="zoom-in" data-aos-duration="900">Ryan happily looks at his hands — he's back.</p>
-            </div>
+
+    <div class="panel-box panel6-box" id="panel6Box">
+        <div style="position: relative; display: inline-block;">
+            <img id="panel6-image" src="assets/panel5_jamie_scene1.png" alt="Last Minute Comeback scene">
         </div>
-        <div class="split-row">
-            <div class="half-scene">
-                <img src="assets/panel5_jamie_scene2.png" alt="Jamie presenting" data-aos="zoom-in" data-aos-duration="900">
-                <p class="scene-caption" data-aos="zoom-in" data-aos-duration="900">Jamie confidently delivers his presentation.</p>
-            </div>
-            <div class="half-scene">
-                <img src="assets/panel5_ryan_scene2.png" alt="Ryan coding" data-aos="zoom-in" data-aos-duration="900">
-                <p class="scene-caption" data-aos="zoom-in" data-aos-duration="900">Ryan immediately knows what to code and finishes on time.</p>
-            </div>
-        </div>
-    </section>
+
+        <p id="panel6-text" class="panel6-text">
+            Jamie happily looks at his hands — he's back.
+        </p>
+
+        <button class="prev" id="panel6PrevBtn" type="button">&lt;</button>
+        <button class="next" id="panel6NextBtn" type="button">&gt;</button>
+    </div>
+</section>
 
     <!-- PANEL 7: Conclusion -->
-    <section class="panel7" id="panel7-conclusion">
-        <div class="conclusion-text" data-aos="zoom-in" data-aos-duration="1000">
+    <section class="panel7 panel-locked" id="panel7-conclusion" aria-hidden="true">
+    <div class="cinema-overlay">
+        <div class="cinema-popup" data-aos="zoom-in" data-aos-duration="1100">
             <p>Jamie aced his presentation, having the class applauding.</p>
             <p>Ryan wrote the best code in the class and was invited to work as a research assistant with his professor.</p>
             <p class="conclusion-moral">There are no easy majors.<br>What matters is that you do what you love.</p>
         </div>
-    </section>
+    </div>
+</section>
 
     <script src="script.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -179,7 +208,7 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
     <script>
-        AOS.init({ once: true, mirror: false, offset: 120, duration: 1000 });
+        AOS.init({ mirror: false, offset: 120, duration: 1000 });
 
         gsap.registerPlugin(ScrollTrigger);
 
@@ -197,3 +226,5 @@
     </script>
 </body>
 </html>
+
+
