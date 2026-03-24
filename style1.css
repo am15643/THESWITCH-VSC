@@ -584,7 +584,7 @@ button:hover.next {
     text-align: center;
 }
 
-.full-scene img {
+.full-scene > img, .ghost-scene-wrap img:first-child {
     width: 100%;
     max-width: 1000px;
     height: auto;
@@ -649,4 +649,36 @@ button:hover.next {
     .panel4, .panel5, .panel6 { padding: 0 20px; }
     .panel-heading { font-size: 38px; }
     .conclusion-moral { font-size: 36px !important; }
+}
+
+/* ── Ghost scene speech bubbles ── */
+.ghost-scene-wrap {
+    position: relative;
+    display: inline-block;
+    max-width: 1000px;
+    width: 100%;
+}
+
+.ghost-scene-wrap img:first-child {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.ghost-bubble {
+    position: absolute;
+    width: 15%;
+    pointer-events: none;
+    border: none;
+    box-shadow: none;
+    z-index: 3;
+    will-change: transform, opacity;
+}
+
+.ghost-bubble-left {
+    animation: bubbleSlideLeft 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.ghost-bubble-right {
+    animation: bubbleSlideRight 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
