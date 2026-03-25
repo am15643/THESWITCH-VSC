@@ -17,20 +17,26 @@
 </head>
 <body>
 
-    <!-- panel 1: argument (slideshow) -->
+    <!-- panel 1: argument -->
+    <!-- slideshow: idle -> annoyed -> fight -> aftermath -->
     <h1>The Switch</h1>
 
     
     <div class="panel1" id="panel1">
         <div class="panel-box" id="panelBox">
+            <!-- main panel image, swapped by javaScript -->
             <div style="position: relative; display: inline-block;">
                 <img id="panel-image" src="assets/Panel1.1-IDLE.jpg">
+
+                <!-- speech bubbles, positioned ontop of panel image -->
                 <img id="speech-left" src="assets/1.1.png" alt="speech bubble" style="position: absolute; top: 0; left: 30%; width: 18%; pointer-events: none; border: none !important; border-radius: 0 !important; box-shadow: none !important;">
                 <img id="speech-right" src="assets/1.2.png" alt="" style="position: absolute; top: 0; right: 30%; width: 18%; pointer-events: none; border: none !important; border-radius: 0 !important; box-shadow: none !important;">
             </div>
 
+            <!-- THUD impact word, shown during fight transition -->
             <div class="impact-word" id="impactWord">THUD</div>
             
+            <!-- narration text box, also swapped by JS -->
             <p id="panel-text"> Jamie and Ryan are two best friends, and they agree on most things, however, one things lingers. Jamie, who's a business student, and Ryan, who studies engineering, were talking in D2. The difficultness of their majors came up in their conversation, prompting an argument. </p>
 
             <button class="prev" id="prevBtn">&lt;</button>
@@ -38,15 +44,17 @@
         </div> 
     </div>
 
-
-
+    <!-- panel 2: morning after -->
+    <!-- entrance animated w AOS -->
     <div class="panel2" id="panel2">
         <div class="panel2-scene" style="position: relative;">
+            <!-- background image zooms in on scroll -->
             <img class="BackGround" id="SecondBG" src="assets/Panel2-BG.jpg"
             data-aos="zoom-in-up"
             data-aos-delay="300"
             data-aos-duration="1600">
 
+            <!-- ryan slides in from left -->
         <div class="side left-side"
             data-aos="fade-right"
             data-aos-delay="900"
@@ -56,6 +64,7 @@
             >
         </div>
 
+        <!-- jamie slides in from right -->
         <div class="side right-side"
             data-aos="fade-left"
             data-aos-delay="900"
@@ -64,8 +73,11 @@
             <img id="JamieSecondPanel" src="assets/JamieAfterWakeUp.png">
         </div>
 
+        <!-- speech bubbles, revealed by IntersectionObserver in JS -->
         <img id="speech-panel2-left" src="assets/5.png" alt="" style="position: absolute; top: 0; left: 0; width: 20%; pointer-events: none; border: none; box-shadow: none; z-index: 3; opacity: 0;">
         <img id="speech-panel2-right" src="assets/4.png" alt="" style="position: absolute; top: 0; right: 0; width: 20%; pointer-events: none; border: none; box-shadow: none; z-index: 3; opacity: 0;">
+
+        <!-- caption fades up after characters appear -->
         <div class="panel2-text-wrap"
             data-aos="fade-up"
             data-aos-delay="1400"
@@ -75,9 +87,13 @@
     </div>
     </div>
 
+    <!-- panel 3: switch + interactive quiz games -->
     <section class="panel3" id="panel3">
     <div class="panel3-box" style="position: relative;">
+
+        <!-- flips to "struggling" image when reveal button is clicked -->
         <img id="panel3-image" src="assets/Panel3.1-CONFUSEDTOGETHER.jpg" alt="Jamie and Ryan confused in each other's roles.">
+        <!-- speech bubble on top of image -->
         <img id="speech-panel3" src="assets/6.png" alt="" class="speech-pop-scale" style="position: absolute; top: -10%; left: 25%; width: 25%; pointer-events: none; border: none; box-shadow: none; z-index: 3;">
 
         <div class="panel3-text-wrap">
@@ -87,12 +103,15 @@
         </div>
     </div>
 
+    <!-- reveal button -->
+    <!-- first click flips image, second click scrolls to help cards -->
     <div class="panel3-controls">
         <button class="panel3-action-btn" id="panel3RevealBtn" type="button">
             How did it go?
         </button>
     </div>
 
+    <!-- help cards -->
     <div class="panel3-help" id="panel3Help">
         <article class="help-card coding-card">
             <h2>Help Jamie</h2>
@@ -101,6 +120,7 @@
             <div class="help-display" id="jamieHelpDisplay">
                 <p class="quiz-label"><strong>Complete the HTML code:</strong></p>
 
+                <!-- user types missing opening tag  -->
                 <pre class="code-box">&lt;<input type="text" id="jamieAnswer" class="inline-code-input" placeholder="tag">Welcome&lt;/h1&gt;</pre>
 
                 <p class="quiz-hint">What should replace the blank?</p>
@@ -110,6 +130,7 @@
             <button class="help-btn" id="helpJamieBtn" type="button">Check code</button>
         </article>
 
+        <!-- user selects correct option -->
         <article class="help-card business-card">
             <h2>Help Ryan</h2>
             <p class="help-subtitle">He has to survive business class.</p>
@@ -147,7 +168,8 @@
 </section>
 
     
-    <!-- PANEL 5: Redemption (dark) -->
+    <!-- panel 5: redemption -->
+    <!-- ghost world, dark background via GSP -->
     <section class="panel5" id="panel5-redemption">
         <div class="full-scene">
             <div class="ghost-scene-wrap">
@@ -176,6 +198,8 @@
         </div>
     </section>
 
+    <!-- panel 6: last min comeback -->
+    <!-- slideshow -->
     <section class="panel6" id="panel6-comeback">
 
     <div class="panel-box panel6-box" id="panel6Box">
@@ -192,7 +216,7 @@
     </div>
 </section>
 
-    <!-- PANEL 7: Conclusion -->
+    <!-- ending screen: moral of the story -->
     <section class="panel7 panel-locked" id="panel7-conclusion" aria-hidden="true">
     <div class="cinema-overlay">
         <div class="cinema-popup" data-aos="zoom-in" data-aos-duration="1100">
@@ -213,13 +237,14 @@
 
         gsap.registerPlugin(ScrollTrigger);
 
+         /* Switch body to black when entering the ghost / redemption panel */
         const darkMode = () => {
             gsap.to("body", { backgroundColor: "#000000", duration: 0.8, overwrite: "auto" });
-            gsap.to(".panel-heading, .scene-caption", { color: "#ffffff", duration: 0.8, overwrite: "auto" });
         };
+        
+        /* Restore the default dark-navy background when leaving the ghost section */
         const lightMode = () => {
             gsap.to("body", { backgroundColor: "#161922", duration: 0.8, overwrite: "auto" });
-            gsap.to(".panel-heading, .scene-caption", { color: "#f7f2e8", duration: 0.8, overwrite: "auto" });
         };
 
         ScrollTrigger.create({ trigger: "#panel5-redemption", start: "top 70%", onEnter: darkMode, onLeaveBack: lightMode });
