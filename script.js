@@ -1,3 +1,6 @@
+// panel 1 argument slideshow: cycles through 4 slides
+    // speech bubbles animate in/out per slide
+    // slide 2->3 triggers THUD shake + smash effect before advancing
 const slides = [
     {
         image: "assets/Panel1.1-IDLE.jpg",
@@ -36,7 +39,7 @@ const panelImage = document.getElementById("panel-image");
 const panelText = document.getElementById("panel-text");
 const prevBtn = document.getElementById("prevBtn");
 const nextBtn = document.getElementById("nextBtn");
-const nextPanel = document.getElementById("panel2");
+const nextPanel = document.getElementById("panel2"); // scroll target after final slide
 const panelBox = document.getElementById("panelBox");
 const speechLeft = document.getElementById("speech-left");
 const speechRight = document.getElementById("speech-right");
@@ -50,6 +53,7 @@ function triggerAnimation(el, className) {
     el.classList.add(className);
 }
 
+// renders the slide at `index`, updating the image, text, and speech bubbles.
 function showSlide(index) {
     panelImage.src = slides[index].image;
     panelText.textContent = slides[index].text;
@@ -66,6 +70,7 @@ function showSlide(index) {
         speechLeft.style.display = "";
         triggerAnimation(speechLeft, 'speech-slide-left');
     } else {
+        // dismiss and hide the bubble if this slide has no left speech
         if (speechLeft.style.display !== "none") {
             triggerAnimation(speechLeft, 'speech-dismiss');
             setTimeout(() => { speechLeft.style.display = "none"; }, 200);
@@ -180,7 +185,7 @@ panel3RevealBtn?.addEventListener("click", () => {
     }
 });
 
-// Trigger panel2 speech bubbles only when scrolled into view
+// trigger panel2 speech bubbles only when scrolled into view
 const p2left = document.getElementById("speech-panel2-left");
 const p2right = document.getElementById("speech-panel2-right");
 
